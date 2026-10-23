@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="SecureFile is a browser-based file encryption and decryption tool.">
+  <title>SecureFile | File Encryption</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="SecureFile home">
+      <span class="brand-icon">S</span>
+      SecureFile<span class="brand-dot">.</span>
+    </a>
+    <div class="privacy-label">
+      <span class="live-dot"></span>
+      LOCAL PROCESSING
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">
+        <span>✦</span> PRIVATE FILE PROTECTION
+      </div>
+      <h1>Your files.<br><span>Your privacy.</span></h1>
+      <p class="hero-text">
+        Encrypt sensitive files with a password and decrypt them
+        whenever you need. Your files stay in your browser.
+      </p>
+    </section>
+
+    <section class="security-strip">
+      <div class="security-item">
+        <span class="security-icon">◈</span>
+        <div><strong>AES-256-GCM</strong><small>Authenticated encryption</small></div>
+      </div>
+      <div class="security-item">
+        <span class="security-icon">⌘</span>
+        <div><strong>PBKDF2</strong><small>Password-based key derivation</small></div>
+      </div>
+      <div class="security-item">
+        <span class="security-icon">↗</span>
+        <div><strong>Local processing</strong><small>No file upload</small></div>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <div class="workspace-heading">
+        <div>
+          <h2>File workspace</h2>
+          <p>Choose an operation to get started.</p>
+        </div>
+        <span class="version-tag">SECUREFILE 1.0</span>
+      </div>
+
+      <div class="mode-tabs" role="group" aria-label="Operation">
+        <button type="button" class="mode-button active"
+                id="encryptMode" aria-pressed="true">
+          <span>🔒</span> Encrypt file
+        </button>
+        <button type="button" class="mode-button"
+                id="decryptMode" aria-pressed="false">
+          <span>🔓</span> Decrypt file
+        </button>
+      </div>
+
+      <div class="drop-zone" id="dropZone" tabindex="0"
+           role="button" aria-label="Choose a file or drop it here">
+        <input type="file" id="fileInput" hidden>
+        <div class="upload-icon">↑</div>
+        <h3 id="dropTitle">Drop your file here</h3>
+        <p>or <span class="browse-text">browse files</span> from your device</p>
+        <small id="fileHint">Any file type · Maximum 100 MB</small>
+      </div>
+
+      <div class="selected-file" id="selectedFile" hidden>
+        <div class="file-icon">▤</div>
+        <div class="file-details">
+          <strong id="fileName">No file selected</strong>
+          <small id="fileSize"></small>
+        </div>
+        <button type="button" id="removeFile" class="remove-button"
+                aria-label="Remove selected file">✕</button>
+      </div>
+
+      <form id="secureForm">
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="password-wrap">
+            <input type="password" id="password"
+                   placeholder="Enter a strong password"
+                   autocomplete="new-password" required minlength="8">
+            <button type="button" class="show-button"
+                    data-toggle="password">Show</button>
+          </div>
+          <div class="strength-track">
+            <div id="strengthBar"></div>
+          </div>
+          <small id="strengthText">Use at least 8 characters.</small>
+        </div>
+
+        <div class="field" id="confirmField">
+          <label for="confirmPassword">Confirm password</label>
+          <div class="password-wrap">
+            <input type="password" id="confirmPassword"
+                   placeholder="Re-enter your password"
+                   autocomplete="new-password">
+            <button type="button" class="show-button"
+                    data-toggle="confirmPassword">Show</button>
+          </div>
+        </div>
+
+        <div class="notice">
+          <span>ⓘ</span>
+          <p id="noticeText">
+            Remember your password. SecureFile cannot recover it if lost.
+          </p>
+        </div>
+
+        <button type="submit" class="primary-button" id="actionButton">
+          <span id="actionIcon">🔒</span>
+          <span id="actionText">Encrypt file</span>
+          <span class="button-arrow">→</span>
+        </button>
+      </form>
+
+      <div id="status" class="status" role="status"
+           aria-live="polite" hidden></div>
+
+      <p class="privacy-note">
+        <span>🛡</span> Files are processed locally. Nothing is uploaded.
+      </p>
+    </section>
+
+    <section class="how-it-works">
+      <h2>Security by design</h2>
+      <div class="steps">
+        <article class="step-card">
+          <span class="step-number">01</span>
+          <h3>Select</h3>
+          <p>Choose the file you want to protect.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-number">02</span>
+          <h3>Protect</h3>
+          <p>Derive a key from your password and encrypt the file.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-number">03</span>
+          <h3>Download</h3>
+          <p>Save your encrypted file and keep your password safe.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <p>SecureFile · Educational cybersecurity project</p>
+      <p>Built with HTML, CSS and the Web Crypto API</p>
+    </footer>
+  </main>
+</body>
+</html>
